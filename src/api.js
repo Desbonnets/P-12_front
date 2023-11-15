@@ -1,3 +1,8 @@
+/**
+ * Permet de récupérer le user avec son id grace a une requete api
+ * @param {Integer} userId 
+ * @returns {any} Retourne la reponse de l'api
+ */
 export async function fetchUserData(userId) {
   try {
     const response = await fetch(`http://localhost:3000/user/${userId}`);
@@ -13,6 +18,11 @@ export async function fetchUserData(userId) {
   }
 }
 
+/**
+ * Permet de récupérer l'activité du user avec son id grace a une requete api
+ * @param {Integer} userId 
+ * @returns {any} Retourne la reponse de l'api
+ */
 export async function fetchUserActivityData(userId) {
   try {
     const response = await fetch(`http://localhost:3000/user/${userId}/activity`);
@@ -28,6 +38,11 @@ export async function fetchUserActivityData(userId) {
   }
 }
 
+/**
+ * Permet de récupérer la moyenne des sessions du user avec son id grace a une requete api
+ * @param {Integer} userId 
+ * @returns {any} Retourne la reponse de l'api
+ */
 export async function fetchUserSessionData(userId) {
   try {
     const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`);
@@ -43,6 +58,11 @@ export async function fetchUserSessionData(userId) {
   }
 }
 
+/**
+ * Permet de récupérer les performances du user avec son id grace a une requete api
+ * @param {Integer} userId 
+ * @returns {any} Retourne la reponse de l'api
+ */
 export async function fetchUserPerformanceData(userId) {
   try {
     const response = await fetch(`http://localhost:3000/user/${userId}/performance`);

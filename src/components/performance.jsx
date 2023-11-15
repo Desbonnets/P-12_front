@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis  } from "recharts";
 
+/**
+ * Permet de faire un graphique (RadarChart) des types d’activités d'un user
+ * @param {Object} data Exemple: data= { kind: { 1: "cardio", 2: "energy" }, data: [{ value: 80, kind: 1 }, { value: 120, kind: 2 }] }
+ */
 class performance extends Component {
     constructor(props) {
         super(props);

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
+/**
+ * Permet de faire un graphique (BarChart) de l'activité quotidienne d'un user
+ * @param {Array} data Exemple: data= [{ day: "2020-07-01", kilogram: 80, calories: 240 }, { day: "2020-07-02", kilogram: 80, calories: 220 }]
+ */
 class activity extends Component {
     constructor(props) {
         super(props);

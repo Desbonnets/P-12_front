@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchUserData, fetchUserActivityData, fetchUserSessionData, fetchUserPerformanceData } from './api';
+import { MockDataUser, MockDataActivity, MockDataAverageSessions, MockDataPerformance } from './MockData';
 import logo from './logo.svg';
 import './App.css';
 import Activity from'./components/activity';
@@ -47,25 +48,25 @@ function App() {
     fetchData();
   }, []);
 
-  let user;
-  if(userData !== null){
-    user = userData.data
-  }
+  let user = MockDataUser().data;
+  // if(userData !== null){
+  //   user = userData.data
+  // }
 
-  let userActivity;
-  if(userActivityData !== null){
-    userActivity = userActivityData.data
-  }
+  let userActivity = MockDataActivity().data;
+  // if(userActivityData !== null){
+  //   userActivity = userActivityData.data
+  // }
 
-  let userSession;
-  if(userSessionData !== null){
-    userSession = userSessionData.data
-  }
+  let userSession =MockDataAverageSessions().data;
+  // if(userSessionData !== null){
+  //   userSession = userSessionData.data
+  // }
 
-  let userPerformance;
-  if(userPerformanceData !== null){
-    userPerformance = userPerformanceData.data
-  }
+  let userPerformance = MockDataPerformance().data;
+  // if(userPerformanceData !== null){
+  //   userPerformance = userPerformanceData.data
+  // }
   
   return (
     <div>
@@ -93,8 +94,8 @@ function App() {
         <h1>Bonjour <span className='color'>{ user !== undefined ? user.userInfos.firstName : '' }</span></h1>
         <Activity data={ userActivity !== undefined ? userActivity.sessions : '' } />
         <DureeSession data={userSession !== undefined ? userSession.sessions : ''} />
-        {/* <Performance data={userPerformance !== undefined ? userPerformance : ''} /> */}
-        <Score data={ user !== undefined ? [user] : '' } />
+        <Performance data={userPerformance !== undefined ? userPerformance : ''} />
+        <Score data={ user !== undefined ? user.todayScore : '' } />
       </main>
     </div>
   );

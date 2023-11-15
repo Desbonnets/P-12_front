@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from "recharts";
 
+/**
+ * Permet de faire un graphique (LineChart) de la durée moyenne des sessions
+ * @param {Array} data Exemple: data= [{ day: 1, sessionLength: 30 }, { day: 2, sessionLength: 23 }]
+ */
 class dureeSession extends Component {
     constructor(props) {
         super(props);

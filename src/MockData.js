@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 
+/**
+ * Retourne le mock du user
+ * @returns {Object}
+ */
 export const MockDataUser = () => {
-  // État local pour stocker les données simulées
   const [mockDataUser, setMockDataUser] = useState({
     data: {
       id: 12,
@@ -23,8 +26,11 @@ export const MockDataUser = () => {
   return mockDataUser;
 };
 
+/**
+ * Retourne le mock des types d’activités d user
+ * @returns {Object}
+ */
 export const MockDataPerformance = () => {
-  // État local pour stocker les données simulées
   const [mockDataPerformance, setMockDataPerformance] = useState({
     data: {
       userId: 12,
@@ -69,7 +75,6 @@ export const MockDataPerformance = () => {
 };
 
 export const MockDataAverageSessions = () => {
-  // État local pour stocker les données simulées
   const [mockDataAverageSessions, setMockDataAverageSessions] = useState({
   data: {
     userId: 12,
@@ -110,7 +115,6 @@ export const MockDataAverageSessions = () => {
 };
 
 export const MockDataActivity = () => {
-  // État local pour stocker les données simulées
   const [mockDataActivity, setMockDataActivity] = useState({
   data: {
     userId: 12,
