@@ -3,6 +3,7 @@ import { fetchUserData, fetchUserActivityData, fetchUserSessionData, fetchUserPe
 import { MockDataUser, MockDataActivity, MockDataAverageSessions, MockDataPerformance } from './MockData';
 import logo from './logo.svg';
 import './App.css';
+import ActivityCard from './components/ActivityCard';
 import Activity from'./components/activity';
 import DureeSession from './components/dureeSession';
 import Performance from './components/performance';
@@ -88,14 +89,48 @@ function App() {
             <li><div className='icon'><img src='images/cyclisme.svg' alt='cyclisme'/></div></li>
             <li><div className='icon'><img src='images/haltere.svg' alt='haltère'/></div></li>
           </ul>
-          </nav>
+          <small className='copyright'>Copyright, SportSee 2020</small>
+        </nav>
       </header>
       <main className='content'>
         <h1>Bonjour <span className='color'>{ user !== undefined ? user.userInfos.firstName : '' }</span></h1>
-        <Activity data={ userActivity !== undefined ? userActivity.sessions : '' } />
-        <DureeSession data={userSession !== undefined ? userSession.sessions : ''} />
-        <Performance data={userPerformance !== undefined ? userPerformance : ''} />
-        <Score data={ user !== undefined ? user.todayScore : '' } />
+        <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+        <div style={{display: 'flex', flexDirection: 'row', columnGap: '30px', rowGap: '30px'}}>
+          <div style={{display: 'flex', flexDirection: 'column', columnGap: '30px', rowGap: '30px'}}>
+            <Activity data={ userActivity !== undefined ? userActivity.sessions : '' } />
+            <div style={{display: 'flex', flexDirection: 'row', columnGap: '30px', rowGap: '30px'}}>
+              <DureeSession data={userSession !== undefined ? userSession.sessions : ''} />
+              <Performance data={userPerformance !== undefined ? userPerformance : ''} />
+              <Score data={ user !== undefined ? user.todayScore : '' } />
+            </div>
+          </div>
+          <div>
+            <ActivityCard
+              name="Calories"
+              unit="kCal"
+              icon={'images/energy.svg'}
+              data={user.keyData.calorieCount}
+            />
+            <ActivityCard
+              name="Protéines"
+              unit="g"
+              icon={'images/chicken.svg'}
+              data={user.keyData.proteinCount}
+            />
+            <ActivityCard
+              name="Glucides"
+              unit="g"
+              icon={'images/apple.svg'}
+              data={user.keyData.carbohydrateCount}
+            />
+            <ActivityCard
+              name="Lipides"
+              unit="g"
+              icon={'images/cheeseburger.svg'}
+              data={user.keyData.lipidCount}
+            />
+          </div>
+        </div>
       </main>
     </div>
   );

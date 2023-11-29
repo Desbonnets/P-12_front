@@ -18,7 +18,6 @@ class score extends Component {
         if(data.length < 2 && data.length > 0){
             data.push({"todayScore": 1});
         }
-        console.log(data);
 
         const style = {
             top: 0,

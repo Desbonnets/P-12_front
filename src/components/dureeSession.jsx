@@ -1,5 +1,39 @@
 import React, { Component } from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, Legend } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Rectangle } from "recharts";
+
+
+/**
+ * Custom active Tooltip's LineChart
+ * @param {Boolean}  [Props.active='true']
+ * @param {Array}   [Props.payload=[]]
+ * @returns tooltip or null
+ */
+const CustomTooltip = ({ active, payload }) => {
+    if (active) {
+      return (
+        <div className='TooltipSession'>
+          <p>{`${payload[0].value} `}min</p>
+        </div>
+      );
+    }
+    return null;
+  };
+/**
+ * Custom active Tooltip's BarChart
+ * @param {prop}
+ * @return {JSX.Element} Rectangle component
+ */
+const CustomCursor = ({ points }) => {
+    return (
+      <Rectangle
+        fill="#000000"
+        opacity={0.2}
+        x={points[1].x}
+        width={1000}
+        height={300}
+      />
+    );
+  };
 
 /**
  * Permet de faire un graphique (LineChart) de la durée moyenne des sessions
@@ -18,7 +52,7 @@ class dureeSession extends Component {
         const NameDays = ({ x, y, payload }) => {
             const days = {1: 'L', 2: 'M', 3: 'M', 4: 'J', 5: 'V', 6: 'S', 7: 'D'};
             return (
-              <text x={x} y={y} dy={16} textAnchor="middle">
+              <text style={{ fill: "#FFFFFF", fontWeight: 500, fontSize: 12 }} x={x} y={y} dy={16} textAnchor="middle">
                 {days[payload.value]}
               </text>
             );
@@ -26,23 +60,20 @@ class dureeSession extends Component {
 
         return (
             <div>
-                <LineChart
-                    width={500}
-                    height={300}
-                    data={data}
-                    margin={{
-                        top: 5,
-                        right: 30,
-                        left: 20,
-                        bottom: 5
-                    }}
-                    >
-                    <XAxis dataKey="day" tick={<NameDays />}  />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="sessionLength" stroke="#000" dot={false} activeDot={{ r: 8 }} />
-                </LineChart>
+                <ResponsiveContainer width={260} height={260}>
+                    <LineChart data={data} style={{ background: "#FF0000", opacity: 0.9, borderRadius: 5 }} margin={{ top: 25, right: 0, left: 0, bottom: 25, }}>
+                        <XAxis interval="preserveStartEnd" fillOpacity={0.7} padding={{ right: 0, left: 0 }} tickLine={false} axisLine={false} dataKey="day" tick={<NameDays />}  />
+                        <YAxis domain={["dataMin - 10", "dataMax + 10"]} padding={{ top: 0, bottom: 0 }} axisLine={false} hide={true} tickLine={false} tick={false}/>
+                        <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} wrapperStyle={{ background: "#FFFFFF", outline: "none" }} />
+                        <text x="8%" y="10%" textAnchor="start" dominantBaseline="middle" fill="#FFFFFF" style={{ fontSize: 14, fontWeight: 500, opacity: 0.5 }}>
+                            Durée moyenne des
+                        </text>
+                        <text x="8%" y="18%" textAnchor="start" dominantBaseline="middle" fill="#FFFFFF" style={{ fontSize: 14, fontWeight: 500, opacity: 0.5, }}>
+                            sessions
+                        </text>
+                        <Line type="natural" dataKey="sessionLength" stroke="#FFFFFF" strokeWidth={2} opacity={0.7} dot={false} activeDot={{ r: 4 }} />
+                    </LineChart>
+                </ResponsiveContainer>
             </div>
         );
     }
