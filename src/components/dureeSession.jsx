@@ -52,23 +52,23 @@ class dureeSession extends Component {
         const NameDays = ({ x, y, payload }) => {
             const days = {1: 'L', 2: 'M', 3: 'M', 4: 'J', 5: 'V', 6: 'S', 7: 'D'};
             return (
-              <text style={{ fill: "#FFFFFF", fontWeight: 500, fontSize: 12 }} x={x} y={y} dy={16} textAnchor="middle">
+              <text style={{ fill: "#FFFFFF", fontWeight: 500, fontSize: 16 }} x={x} y={y} dy={16} textAnchor="middle">
                 {days[payload.value]}
               </text>
             );
           };
 
         return (
-            <div>
-                <ResponsiveContainer width={260} height={260}>
-                    <LineChart data={data} style={{ background: "#FF0000", opacity: 0.9, borderRadius: 5 }} margin={{ top: 25, right: 0, left: 0, bottom: 25, }}>
-                        <XAxis interval="preserveStartEnd" fillOpacity={0.7} padding={{ right: 0, left: 0 }} tickLine={false} axisLine={false} dataKey="day" tick={<NameDays />}  />
+            <div className='SessionGraph'>
+                <ResponsiveContainer minHeight={0}>
+                    <LineChart data={data} margin={{ top: 25, right: 0, left: 0, bottom: 25, }}>
+                        <XAxis interval="preserveStartEnd" fillOpacity={0.7} padding={{ right: 0, left: 0 }} tickLine={false} axisLine={false} dataKey="day" />
                         <YAxis domain={["dataMin - 10", "dataMax + 10"]} padding={{ top: 0, bottom: 0 }} axisLine={false} hide={true} tickLine={false} tick={false}/>
                         <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} wrapperStyle={{ background: "#FFFFFF", outline: "none" }} />
-                        <text x="8%" y="10%" textAnchor="start" dominantBaseline="middle" fill="#FFFFFF" style={{ fontSize: 14, fontWeight: 500, opacity: 0.5 }}>
+                        <text x="8%" y="10%" textAnchor="start" dominantBaseline="middle" fill="#FFFFFF" style={{ fontSize: 16, fontWeight: 500, opacity: 0.5 }}>
                             Durée moyenne des
                         </text>
-                        <text x="8%" y="18%" textAnchor="start" dominantBaseline="middle" fill="#FFFFFF" style={{ fontSize: 14, fontWeight: 500, opacity: 0.5, }}>
+                        <text x="8%" y="18%" textAnchor="start" dominantBaseline="middle" fill="#FFFFFF" style={{ fontSize: 16, fontWeight: 500, opacity: 0.5, }}>
                             sessions
                         </text>
                         <Line type="natural" dataKey="sessionLength" stroke="#FFFFFF" strokeWidth={2} opacity={0.7} dot={false} activeDot={{ r: 4 }} />

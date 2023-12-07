@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { RadialBarChart, RadialBar, Legend } from "recharts";
+import { RadialBarChart, RadialBar, ResponsiveContainer } from "recharts";
 
 /**
  * Permet de faire un graphique (RadialBarChart) du score moyen d'un user
@@ -25,11 +25,46 @@ class score extends Component {
             lineHeight: "24px"
           };
 
+        const tab = [
+        {
+            scale: 0,
+            fill: "transparent",
+        },
+        {
+            scale: 100,
+            fill: "transparent",
+        },
+        {
+            scale: data*100,
+            fill: "#FF0000",
+        },
+        ];
+
         return (
-            <RadialBarChart width={500} height={300} cx={150} cy={150} innerRadius={20} outerRadius={140} barSize={10} data={data} >
-                <RadialBar minAngle={15} background clockWise dataKey="todayScore" />
-                <Legend iconSize={10} width={120} height={140} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
-            </RadialBarChart>
+            <div className='ScoreGraph'>
+                <h2>Score</h2>
+                <div className='contentScore'>
+                    <p className='Objectif'>{data*100}%</p>
+                    <p className='Comment'>de votre objectif</p>
+                </div>
+                <ResponsiveContainer>
+                    <RadialBarChart 
+                    innerRadius="50%"
+                    outerRadius="80%"
+                    data={tab}
+                    startAngle={-280}
+                    endAngle={80}
+                    barSize={20}
+                    >
+                        <RadialBar
+                            background={false}
+                            clockWise={true}
+                            dataKey="scale"
+                            cornerRadius={25}
+                        />
+                    </RadialBarChart>
+                </ResponsiveContainer>
+            </div>
         );
     }
 }
