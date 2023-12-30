@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 /**
  * Permet de faire un graphique (BarChart) de l'activité quotidienne d'un user
@@ -31,17 +31,19 @@ class activity extends Component {
 
         return (
             <div className='BarChart'>
-                <BarChart width={835} height={320} data={data} barGap='8' margin={{ top: 5, right: 30, left: 20, bottom: 5 }} >
-                    <CartesianGrid vertical={false} />
-                    <XAxis dataKey="day" tickLine={false} tick={{ fill: "#9B9EAC", fontWeight: 500, fontSize: 16 }} tickMargin={14} axisLine={false}/>
-                    <YAxis yAxisId="left" orientation="left" dataKey="calories" tickCount={3} hide={true} />
-                    <YAxis yAxisId="right" orientation="right" dataKey="kilogram" tickLine={false} tick={{ fill: "#9B9EAC", fontWeight: 500, fontSize: 16 }} tickMargin={45} minTickGap={16} axisLine={false} domain={["dataMin - 2", "dataMax + 1"]} tickCount={3} />
-                    <Tooltip content={<CustomTooltip />} wrapperStyle={{ outline: "none" }} />
-                    <Legend align={'right'} verticalAlign={'top'} iconType={'circle'} iconSize={8} height={60} formatter={(value) => <span style={{ fontFamily: "roboto", color: "#74798C", fontSize: 16, fontWeight: 500 }}>{value}</span>}/>
-                    <Bar dataKey="kilogram" name='Poids (kg)' fill="#282D30" radius={[25, 25, 0, 0]} barSize={7} yAxisId="right"/>
-                    <Bar dataKey="calories" name='Calories brûlées (kCal)' fill="#E60000" radius={[3, 3, 0, 0]} barSize={7} yAxisId="left"/>
-                    <text y={15} width={147} height={48} textAnchor="start" dominantBaseline="middle" fill="#20253A" style={{ fontWeight: 500, fontSize: 16, fontFamily: "roboto", }}>Activité quotidienne</text>
-                </BarChart>
+                <ResponsiveContainer minWidth={'100%'} minHeight={'100%'}>
+                    <BarChart data={data} barGap='8' margin={{ top: 5, right: 30, left: 20, bottom: 5 }} >
+                        <CartesianGrid vertical={false} />
+                        <XAxis dataKey="day" tickLine={false} tick={{ fill: "#9B9EAC", fontWeight: 500, fontSize: 16 }} tickMargin={14} axisLine={false}/>
+                        <YAxis yAxisId="left" orientation="left" dataKey="calories" tickCount={3} hide={true} />
+                        <YAxis yAxisId="right" orientation="right" dataKey="kilogram" tickLine={false} tick={{ fill: "#9B9EAC", fontWeight: 500, fontSize: 16 }} tickMargin={45} minTickGap={16} axisLine={false} domain={["dataMin - 2", "dataMax + 1"]} tickCount={3} />
+                        <Tooltip content={<CustomTooltip />} wrapperStyle={{ outline: "none" }} />
+                        <Legend align={'right'} verticalAlign={'top'} iconType={'circle'} iconSize={8} height={60} formatter={(value) => <span style={{ fontFamily: "roboto", color: "#74798C", fontSize: 16, fontWeight: 500 }}>{value}</span>}/>
+                        <Bar dataKey="kilogram" name='Poids (kg)' fill="#282D30" radius={[25, 25, 0, 0]} barSize={7} yAxisId="right"/>
+                        <Bar dataKey="calories" name='Calories brûlées (kCal)' fill="#E60000" radius={[3, 3, 0, 0]} barSize={7} yAxisId="left"/>
+                        <text y={15} width={147} height={48} textAnchor="start" dominantBaseline="middle" fill="#20253A" style={{ fontWeight: 500, fontSize: 16, fontFamily: "roboto", }}>Activité quotidienne</text>
+                    </BarChart>
+                </ResponsiveContainer>
             </div>
         );
     }

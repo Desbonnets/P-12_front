@@ -47,7 +47,7 @@ class score extends Component {
                     <p className='Objectif'>{data*100}%</p>
                     <p className='Comment'>de votre objectif</p>
                 </div>
-                <ResponsiveContainer>
+                <ResponsiveContainer minWidth={'100%'} minHeight={'100%'}>
                     <RadialBarChart 
                     innerRadius="50%"
                     outerRadius="80%"

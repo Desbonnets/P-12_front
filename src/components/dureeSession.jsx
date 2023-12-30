@@ -60,7 +60,7 @@ class dureeSession extends Component {
 
         return (
             <div className='SessionGraph'>
-                <ResponsiveContainer minHeight={0}>
+                <ResponsiveContainer minWidth={'100%'} minHeight={'100%'}>
                     <LineChart data={data} margin={{ top: 25, right: 0, left: 0, bottom: 25, }}>
                         <XAxis interval="preserveStartEnd" fillOpacity={0.7} padding={{ right: 0, left: 0 }} tickLine={false} axisLine={false} dataKey="day" />
                         <YAxis domain={["dataMin - 10", "dataMax + 10"]} padding={{ top: 0, bottom: 0 }} axisLine={false} hide={true} tickLine={false} tick={false}/>

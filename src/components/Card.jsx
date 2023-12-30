@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";
 
 function Card({ gender, id }) {
   return (
-    <Link to={`user/${id}`}>
+    <Link to={`user/${id}`} style={{textDecoration:'none'}}>
       <div className="CardWrapper">
-        <img style={{height: '10rem', width: '10rem'}} src={gender === "woman" ? 'images/woman.svg' : 'images/man.svg'} alt="genre" />
-        <h2 className="cardTitle">User {id}</h2>
+        <img style={{height: '5rem', width: '5rem'}} src={gender === "woman" ? 'images/woman.svg' : 'images/man.svg'} alt="genre" />
+        <h2 className="cardTitle">User : {id}</h2>
       </div>
     </Link>
   );

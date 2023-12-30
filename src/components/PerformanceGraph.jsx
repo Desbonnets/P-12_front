@@ -19,7 +19,7 @@ class PerformanceGraph extends Component {
         
         return (
             <div className='PerformanceGraph'>
-                <ResponsiveContainer>
+                <ResponsiveContainer minWidth={'100%'} minHeight={'100%'}>
                     <RadarChart outerRadius="58%" innerRadius="5%" data={data.dataPerformance} cx="50%" cy="50%" >
                         <PolarGrid radialLines={false} outerRadius="10%" />
                         <PolarAngleAxis dataKey="kind" stroke={"#fff"} tickLine={false} radius="5%" fontSize={12} strokeWidth={1} axisLine={true} />
