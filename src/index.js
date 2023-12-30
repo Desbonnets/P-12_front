@@ -4,7 +4,8 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Dashboard from './routes/Dashboard';
 import Home from './routes/Home';
-import Error from './routes/Error';
+import Error404 from './routes/Error404';
+import Error500 from './routes/Error500';
 import { ApiProvider } from "./api/apiContext";
 
 const route = createBrowserRouter([
@@ -17,8 +18,12 @@ const route = createBrowserRouter([
     element: <Dashboard />,
   },
   {
+    path: 'error_500',
+    element: <Error500 />,
+  },
+  {
     path: '*',
-    element: <Error />,
+    element: <Error404 />,
   }
 ])
 

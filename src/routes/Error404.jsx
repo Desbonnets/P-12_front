@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
  * @returns {JSX.Element} Error component
  */
 
-function Error() {
+function Error404() {
   return (
     <div className="Error">
       <section className="SectionError">
@@ -16,4 +16,4 @@ function Error() {
     </div>
   );
 }
-export default Error;
+export default Error404;

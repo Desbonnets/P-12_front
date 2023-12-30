@@ -4,10 +4,11 @@ import { fetchData } from "./fetch";
  * Permet de récupérer le user avec son id grace a une requete api
  * @param {Integer} userId 
  * @param {Boolean} isApi 
+ * @param { function } navigate React dom useNavigate()
  * @returns {any} Retourne la reponse de l'api
  */
-export async function getUserData(userId, isApi) {
-  const response = isApi ? await fetchData(`http://localhost:3000/user/${userId}`) : MockDataUser(userId);
+export async function getUserData(userId, isApi, navigate) {
+  const response = isApi ? await fetchData(`http://localhost:3000/user/${userId}`, navigate) : MockDataUser(userId);
   return response;
 }
 
@@ -15,11 +16,12 @@ export async function getUserData(userId, isApi) {
  * Permet de récupérer l'activité du user avec son id grace a une requete api
  * @param {Integer} userId 
  * @param {Boolean} isApi 
+ * @param { function } navigate React dom useNavigate()
  * @returns {any} Retourne la reponse de l'api
  */
-export async function getUserActivityData(userId, isApi) {
+export async function getUserActivityData(userId, isApi, navigate) {
 
-  const response = isApi ? await fetchData(`http://localhost:3000/user/${userId}/activity`) : MockDataActivity(userId);
+  const response = isApi ? await fetchData(`http://localhost:3000/user/${userId}/activity`, navigate) : MockDataActivity(userId);
   return response;
 }
 
@@ -27,11 +29,12 @@ export async function getUserActivityData(userId, isApi) {
  * Permet de récupérer la moyenne des sessions du user avec son id grace a une requete api
  * @param {Integer} userId 
  * @param {Boolean} isApi 
+ * @param { function } navigate React dom useNavigate()
  * @returns {any} Retourne la reponse de l'api
  */
-export async function getUserSessionData(userId, isApi) {
+export async function getUserSessionData(userId, isApi, navigate) {
 
-  const response = isApi ? await fetchData(`http://localhost:3000/user/${userId}/average-sessions`) : MockDataAverageSessions(userId);
+  const response = isApi ? await fetchData(`http://localhost:3000/user/${userId}/average-sessions`, navigate) : MockDataAverageSessions(userId);
   return response;
 }
 
@@ -39,10 +42,11 @@ export async function getUserSessionData(userId, isApi) {
  * Permet de récupérer les performances du user avec son id grace a une requete api
  * @param {Integer} userId 
  * @param {Boolean} isApi 
+ * @param { function } navigate React dom useNavigate()
  * @returns {any} Retourne la reponse de l'api
  */
-export async function getUserPerformanceData(userId, isApi) {
+export async function getUserPerformanceData(userId, isApi, navigate) {
 
-  const response = isApi ? await fetchData(`http://localhost:3000/user/${userId}/performance`) : MockDataPerformance(userId);
+  const response = isApi ? await fetchData(`http://localhost:3000/user/${userId}/performance`, navigate) : MockDataPerformance(userId);
   return response;
 }
