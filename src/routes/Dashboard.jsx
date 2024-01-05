@@ -25,19 +25,18 @@ function Dashboard() {
     useEffect(() => {
 
         const fetchData = async () => {
-        try {
-            const user = await userData(id, api, navigate);
-            const activity = await activityData(id, api, navigate);
-            const averageSession = await averageData(id, api, navigate);
-            const performance = await performanceData(id, api, navigate);
-            if(!user.error || !activity.error || !averageSession.error || !performance.error ){
-                setData({ user, activity, averageSession, performance });
-                setIsLoading(false);
+            try {
+                const user = await userData(id, api, navigate);
+                const activity = await activityData(id, api, navigate);
+                const averageSession = await averageData(id, api, navigate);
+                const performance = await performanceData(id, api, navigate);
+                if(!user.error || !activity.error || !averageSession.error || !performance.error ){
+                    setData({ user, activity, averageSession, performance });
+                    setIsLoading(false);
+                }
+            } catch (error) {
+                console.error('Une erreur s\'est produite lors de la récupération des données :', error);
             }
-        } catch (error) {
-            console.error('Une erreur s\'est produite lors de la récupération des données :', error);
-            // navigate("/Error");
-        }
         };
 
         fetchData();
@@ -62,10 +61,6 @@ function Dashboard() {
                     <li><CardIcon backgroundIcon='#fff' colorIcon='#000' srcIcon='../images/natation.svg' altIcon='natation'/></li>
                     <li><CardIcon backgroundIcon='#fff' colorIcon='#000' srcIcon='../images/cyclisme.svg' altIcon='cyclisme'/></li>
                     <li><CardIcon backgroundIcon='#fff' colorIcon='#000' srcIcon='../images/haltere.svg' altIcon='haltere'/></li>
-                    {/* <li><div className='icon'><img src='../images/meditation.svg' alt='meditation' /></div></li>
-                    <li><div className='icon'><img src='../images/natation.svg' alt='natation' /></div></li>
-                    <li><div className='icon'><img src='../images/cyclisme.svg' alt='cyclisme' /></div></li>
-                    <li><div className='icon'><img src='../images/haltere.svg' alt='haltère' /></div></li> */}
                 </ul>
                 <small className='copyright'>Copyright, SportSee 2020</small>
                 </nav>
