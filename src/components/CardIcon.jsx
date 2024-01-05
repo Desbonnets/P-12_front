@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 /**
  * Create a user card
  * @param {{backgroundIcon:string, colorIcon:string, src:string, altIcon:string}} param0
@@ -13,10 +11,5 @@ function CardIcon({ backgroundIcon, colorIcon, srcIcon, altIcon, classIcon }) {
     </div>
   );
 }
-
-// Card.propTypes = {
-//   gender: PropTypes.oneOf(['woman', 'man']).isRequired,
-//   id: PropTypes.string.isRequired,
-// };
 
 export default CardIcon;

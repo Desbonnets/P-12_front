@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Performance from '../models/Performance';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
 
 /**
@@ -30,9 +28,5 @@ class PerformanceGraph extends Component {
         );
     }
 }
-
-PerformanceGraph.propTypes = {
-    data: PropTypes.instanceOf(Performance).isRequired,
-};
 
 export default PerformanceGraph;

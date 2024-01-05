@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import CardIcon from "./CardIcon";
 
 /**
@@ -14,7 +13,6 @@ function ActivityCard({ name, unit, icon, data }) {
     <div className="ActivityCard">
       <div className="ActivityCardContent">
         <CardIcon classIcon='CardIcon' backgroundIcon={icon.background} colorIcon={icon.color} srcIcon={icon.src} altIcon={icon.alt} opacityIcon='0.07' />
-        {/* <img className="CardIcon" src={icon} alt="icon" /> */}
         <div className="Infos">
           <p>
             {data} {unit}
@@ -25,12 +23,5 @@ function ActivityCard({ name, unit, icon, data }) {
     </div>
   );
 }
-
-// ActivityCard.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   unit: PropTypes.string.isRequired,
-//   icon: PropTypes.Object.isRequired,
-//   data: PropTypes.number.isRequired,
-// };
 
 export default ActivityCard;

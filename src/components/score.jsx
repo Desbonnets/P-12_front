@@ -15,15 +15,6 @@ class score extends Component {
 
     render() {
         let {data} = this.props;
-        if(data.length < 2 && data.length > 0){
-            data.push({"todayScore": 1});
-        }
-
-        const style = {
-            top: 0,
-            left: 350,
-            lineHeight: "24px"
-          };
 
         const tab = [
         {

@@ -49,15 +49,6 @@ class dureeSession extends Component {
     render() {
         const { data } = this.props;
 
-        const NameDays = ({ x, y, payload }) => {
-            const days = {1: 'L', 2: 'M', 3: 'M', 4: 'J', 5: 'V', 6: 'S', 7: 'D'};
-            return (
-              <text style={{ fill: "#FFFFFF", fontWeight: 500, fontSize: 16 }} x={x} y={y} dy={16} textAnchor="middle">
-                {days[payload.value]}
-              </text>
-            );
-          };
-
         return (
             <div className='SessionGraph'>
                 <ResponsiveContainer minWidth={'100%'} minHeight={'100%'}>
